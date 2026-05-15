@@ -1,1 +1,271 @@
+/* ==========================================
+   PROJET : QUI BOUGE GAGNE
+   DESIGN : TECHNO-CLEAN GLASS - REV 10
+   ========================================== */
 
+
+:root {
+    --bg-base: #f0f2f5;      
+    --surface: rgba(40, 40, 40, 0.85); /* <--- TA COULEUR CHARCOAL */
+    --accent: #00f3ff;       
+    --text: #ffffff;           /* <--- TEXTE BLANC POUR LE CONTRASTE */
+    --border: rgba(0, 189, 204, 0.4); 
+    --danger: #ff4444;
+}
+
+/*
+:root {
+    --bg-base: #f0f2f5;      /* Gris perle doux (pas blanc pur) */
+    --surface: rgba(255, 255, 255, 0.85); /* Effet verre dépoli */
+    --accent: #00a8b5;       /* Cyan plus profond pour la lisibilité */
+    --text: #222222;         /* Texte anthracite (moins dur que le noir) */
+    --border: rgba(0, 189, 204, 0.2); /* Bordure subtile cyan */
+}  */
+
+* { box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+   
+}
+
+body {
+    background-color: var(--bg-base);
+    overflow-x: hidden;
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+/* FOND D'ÉCRAN (Ton image Pixabay) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../images/fond_lumineux.jpg');
+    background-size: cover;
+    background-position: center;
+    /* On augmente la visibilité de l'image (40% visible) */
+    opacity: 0.4; 
+    z-index: -1;
+}
+
+header { margin: 30px 0; text-align: center; }
+h1 { letter-spacing: 3px; font-weight: 800; text-transform: uppercase; color: #111; }
+
+/* BOÎTE LECTEUR ET CARTES (EFFET VERRE) */
+.player-box, .nav-card, .grid-container {
+    background: var(--surface);
+    backdrop-filter: blur(10px); /* Flou derrière la boîte (très pro) */
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* LECTEUR AUDIO */
+#track-title { font-weight: bold; color: var(--accent); margin-bottom: 15px; text-transform: uppercase; }
+
+/* NAVIGATION EN CARTES */
+.main-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+}
+
+.nav-card {
+    max-width: none;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-card:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.nav-card h3 { color: var(--accent); margin: 0; font-size: 1rem; }
+.nav-card p { font-size: 0.8rem; color: #666; margin-top: 5px; }
+
+/* GRILLE DE VITALITÉ (VITALITE.HTML) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 350px;
+    margin: 20px auto;
+}
+
+.block {
+    width: 50px; height: 50px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: 0.2s; font-weight: bold; color: #888;
+}
+
+.block.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 168, 181, 0.3);
+    border-color: transparent;
+}
+
+/* BOUTONS */
+button {
+    background: white;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* --- SECTION PITCH (RÉVISION 11) --- */
+/* --- SECTION PITCH GÉNÉRALE (PC) --- */
+.pitch-box {
+    width: 95%;              /* Prend de la place sur tablette */
+    max-width: 900px;        /* <--- LE BOUCLIER : Empêche l'élargissement excessif */
+    margin: 40px auto;       /* Centre la boîte sur ton écran */
+    padding: 40px;
+    background: rgba(245, 245, 245, 0.9);
+    border-radius: 12px;
+    border-left: 5px solid var(--accent);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    box-sizing: border-box;  /* Assure que la boîte ne gonfle pas */
+}
+
+.pitch-box h2 {
+    color: #000000;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.pitch-content p {
+    color: #1a1a1a; /* Noir profond */
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.cta-area {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.highlight-text {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.2rem;
+}
+
+.btn-main {
+    display: inline-block;
+    background: #000;
+    color: var(--accent);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+/* ==========================================
+   OPTIMISATION MOBILE (RÉVISION 12)
+   ========================================== */
+
+@media (max-width: 768px) {
+
+.pitch-box {
+        padding: 25px 20px;
+        margin: 20px 0;      /* <--- LE VERROU : Supprime le jeu latéral */
+        width: 100%;         /* Prend toute la largeur du téléphone */
+        border-radius: 0;    /* Look "app" sur mobile */
+        border-left: none;
+        border-top: 4px solid var(--accent);
+    }
+
+    /* 1. On réduit les marges globales pour gagner de l'espace */
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Titre un peu plus petit pour mobile */
+    }
+
+    /* 2. Le lecteur audio prend toute la largeur disponible */
+    .player-box {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    /* 3. NAVIGATION : Les cartes se mettent l'une sous l'autre */
+    .main-nav {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 10px;
+    }
+
+    .nav-card {
+        padding: 15px;
+    }
+
+    /* 4. PITCH DE VENTE : On réduit le rembourrage pour éviter l'effet "tunnel" */
+    .pitch-box {
+        padding: 25px 15px;
+        margin-top: 20px;
+        border-left: none;
+        border-top: 4px solid var(--accent); /* Bordure en haut sur mobile */
+    }
+
+    .pitch-box h2 {
+        font-size: 1.4rem;
+    }
+
+    .pitch-content p {
+        font-size: 1.05rem; /* Texte légèrement plus petit pour la lecture continue */
+        text-align: left; /* Plus naturel à lire sur un petit écran */
+    }
+
+  
+.btn-main {
+        display: block;          
+        width: 100%;             
+        box-sizing: border-box;  /* <--- LE CORRECTIF EST ICI */
+        font-size: 1rem;
+        padding: 15px 10px;      
+        text-align: center;      
+    }
+
+}
