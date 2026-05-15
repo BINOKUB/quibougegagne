@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement - Qui Bouge Gagne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+    body {
+        /* 1. L'IMAGE DE FOND AVEC UN FILTRE SOMBRE POUR LA LISIBILITÉ */
+        background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                    url('images/fond_lumineux.jpg'); /* REMPLACE PAR LE NOM DE TON IMAGE */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        
+        color: #fff;
+        font-family: 'Urbanist', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .budget-card {
+        background-color: rgba(26, 26, 26, 0.95); /* Légère transparence pour le style */
+        padding: 40px;
+        text-align: center;
+        border-radius: 15px;
+        border: 1px solid #00f3ff;
+        max-width: 550px;
+        width: 100%;
+        box-shadow: 0 10px 40px rgba(0,243,255,0.2);
+        backdrop-filter: blur(5px); /* Effet de flou moderne sur le fond */
+    }
+
+    h2 { font-family: 'Orbitron', sans-serif; color: #00f3ff; margin-bottom: 25px; letter-spacing: 2px; }
+    p { line-height: 1.6; color: #daffde; font-size: 17px; }
+    
+    .table-container { margin: 30px 0; background-color: rgba(38, 38, 38, 0.8); border-radius: 10px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    td { padding: 15px 20px; border-bottom: 1px solid #333; }
+    
+    .price-label { color: #aaa; font-size: 14px; text-transform: uppercase; }
+    .price-value { text-align: right; font-weight: bold; font-size: 18px; }
+    
+    .target-row { background-color: rgba(0, 243, 255, 0.15); }
+    .target-row td { border-bottom: none; color: #00f3ff; }
+    .target-price { font-size: 24px !important; text-shadow: 0 0 10px rgba(0,243,255,0.5); }
+
+    .btn-retour {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 30px;
+        border: 1px solid #00f3ff;
+        color: #00f3ff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        transition: 0.3s;
+    }
+    .btn-retour:hover { background-color: #00f3ff; color: #000; }
+</style>
+</head>
+<body>
+
+    <div class="budget-card">
+        <h2>L'UNITÉ FAIT LA FORCE</h2>
+        
+        <p>
+            Le projet <strong>Qui Bouge Gagne</strong> est une initiative à frais partagés. 
+            Plus la cohorte est grande, plus l'investissement de chacun diminue.
+        </p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td class="price-label">Si nous sommes 30</td>
+                    <td class="price-value">333 $</td>
+                </tr>
+                <tr>
+                    <td class="price-label">Si nous sommes 40</td>
+                    <td class="price-value">250 $</td>
+                </tr>
+                <tr class="target-row">
+                    <td class="price-label" style="font-weight: bold;">Objectif : 50 Aspirants</td>
+                    <td class="price-value target-price">200 $</td>
+                </tr>
+            </table>
+        </div>
+
+        <p style="font-size: 14px; color: #777; font-style: italic;">
+            "La force du groupe au service de votre vitalité."
+        </p>
+
+        <a href="index.html" class="btn-retour">RETOUR AU QUARTIER GÉNÉRAL</a>
+    </div>
+
+</body>
+</html>
