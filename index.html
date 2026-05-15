@@ -29,18 +29,32 @@
 </div>
 
 
-<div style="text-align: center; margin-top: -15px; margin-bottom: 40px;">
-    <a href="budget.html" style="color: #00f3ff; font-family: 'Urbanist', sans-serif; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; border-bottom: 1px solid rgba(0, 243, 255, 0.3); padding-bottom: 2px;">
+<div style="text-align: center; margin-top: -10px; margin-bottom: 40px;">
+    <a href="budget.html" style="
+        display: inline-block;
+        background-color: rgba(26, 26, 26, 0.85); /* Fond Charcoal protecteur */
+        color: #ffffff; /* Texte blanc pur pour un contraste maximum */
+        padding: 8px 20px;
+        border-radius: 30px;
+        border: 1px solid rgba(0, 243, 255, 0.5); /* Rappel du Cyan discret */
+        font-family: 'Urbanist', sans-serif;
+        font-size: 11px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        backdrop-filter: blur(4px); /* Effet de flou sur l'arrière-plan */
+        transition: 0.3s;
+    ">
         📊 Voir l'échelle de prix partagé
     </a>
 </div>
 
 <style>
-    /* Effet au survol pour montrer que c'est cliquable */
+    /* Effet d'activation au survol */
     a[href="budget.html"]:hover {
-        opacity: 1 !important;
-        text-shadow: 0 0 10px rgba(0, 243, 255, 0.8);
-        border-bottom: 1px solid #00f3ff;
+        background-color: #00f3ff !important;
+        color: #000000 !important;
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
     }
 </style>
     
