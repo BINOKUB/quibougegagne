@@ -13,6 +13,28 @@
         <p class="tagline"><h1>MUSIQUE • ÉNERGIE • MOUVEMENT</h1></p>
     </header>
 
+<div style="background-color: #262626; padding: 40px; font-family: Arial, sans-serif; color: #ffffff; text-align: center; border-radius: 15px; border: 2px solid #00f3ff; width: 90%; max-width: 500px; margin: 30px auto; box-shadow: 0 10px 40px rgba(0,243,255,0.2);">
+    <h3 style="color: #ffffff; font-size: 18px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-family: 'Urbanist', sans-serif;">Aspirants en Mouvement</h3>
+    
+    <div style="font-family: 'Orbitron', sans-serif; font-size: 72px; color: #00f3ff; line-height: 1; text-shadow: 0 0 30px rgba(0, 243, 255, 0.7);">
+        <span id="counter">
+          <span style="display: inline-block; width: 30px; height: 30px; background-color: #00f3ff; border-radius: 50%; box-shadow: 0 0 15px #00f3ff; animation: pulse 2s infinite;"></span>
+        </span>
+    </div>
+    
+    <p style="margin-top: 15px; font-size: 14px; color: #999999;">Rejoignez la cohorte Qui Bouge Gagne</p>
+</div>
+
+<style>
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.7); }
+        70% { box-shadow: 0 0 0 20px rgba(0, 243, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+    }
+</style>
+
+
+    
     <section class="player-box">
         <h2 id="track-title">CHARGEMENT...</h2>
         <div class="controls">
@@ -55,5 +77,33 @@
 </section>
 
     <script src="js/core.js"></script>
+
+<script>
+    // 1. Mets ici l'URL que Google t'a donnée à l'étape 2 (l'URL /exec)
+    const TELEMETRY_API_URL = 'https://script.google.com/macros/s/AKfycbysnh-B4mx4dD38HU5E5665MR-hWFrU4wXIX-Bhq_IBKD3p-Pjax9_bamMDZLXrlMKKAw/exec';
+
+    async function updateCounter() {
+        const counterElement = document.getElementById('counter');
+        
+        try {
+            // 2. On interroge l'API de Télémétrie
+            const response = await fetch(TELEMETRY_API_URL);
+            const data = await response.json();
+            
+            // 3. On injecte le chiffre (et on cache le pulse de chargement)
+            counterElement.innerText = data.count;
+            
+        } catch (error) {
+            // En cas d'erreur de réseau, on met un chiffre par défaut sécurisé
+            console.error("Erreur de télémétrie :", error);
+            counterElement.innerText = "0"; // Mettre "0" ou une petite valeur
+        }
+    }
+
+    // 4. On exécute le code dès que la page est chargée
+    window.onload = updateCounter;
+</script>
+
+    
 </body>
 </html>
