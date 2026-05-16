@@ -1,4 +1,4 @@
-// --- CONFIGURATION SYSTÈME (V2 - IndexedDB) ---
+// --- CONFIGURATION SYSTÈME (V2.1 - 100% INDEXEDDB) ---
 let playlists = [];
 let currentPlaylistIndex = null;
 let playingIndices = { pl: null, tr: null };
@@ -8,21 +8,23 @@ const audioPlayer = document.getElementById('main-audio-player');
 const trackNameDisplay = document.getElementById('current-track-name');
 const clockElement = document.getElementById('digital-clock');
 
-// --- INITIALISATION DE LA BASE DE DONNÉES (Le Garde-Manger) ---
+// --- INITIALISATION DU COFFRE-FORT (IndexedDB) ---
 const dbName = "HitClubDB";
 let db;
 
-const request = indexedDB.open(dbName, 1);
+const request = indexedDB.open(dbName, 2); // Version 2 pour inclure la structure
 request.onupgradeneeded = (e) => {
     db = e.target.result;
-    db.createObjectStore("files"); // Stockage des MP3 réels
-};
-request.onsuccess = (e) => {
-    db = e.target.result;
-    loadPlaylistsFromStorage();
+    if (!db.objectStoreNames.contains("files")) db.createObjectStore("files");
+    if (!db.objectStoreNames.contains("config")) db.createObjectStore("config"); // Store pour les listes
 };
 
-// --- LOGIQUE DU CHRONOMÈTRE (Inchangée) ---
+request.onsuccess = (e) => {
+    db = e.target.result;
+    loadAllFromDB(); // On charge tout depuis la base de données
+};
+
+// --- LOGIQUE DU CHRONOMÈTRE (Stable) ---
 let secondsElapsed = 0;
 let chronoInterval = null;
 
@@ -49,10 +51,11 @@ function toggleChrono() {
 function resetChrono() {
     clearInterval(chronoInterval); chronoInterval = null;
     secondsElapsed = 0; updateChronoDisplay();
-    document.getElementById('start-stop-btn').textContent = "DÉMARRER";
+    const btn = document.getElementById('start-stop-btn');
+    btn.textContent = "DÉMARRER"; btn.style.color = "var(--accent-color)";
 }
 
-// --- GESTION DES VUES & SHUFFLE ---
+// --- NAVIGATION ET SHUFFLE ---
 function switchView(viewName) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById(viewName + '-view').classList.add('active');
@@ -65,15 +68,12 @@ function toggleShuffle() {
     btn.classList.toggle('shuffle-active', isShuffle);
 }
 
-// --- LECTURE ET PERSISTANCE ---
+// --- LECTURE PERMANENTE ---
 async function playTrack(plIndex, tIndex) {
     const track = playlists[plIndex].tracks[tIndex];
     playingIndices = { pl: plIndex, tr: tIndex };
 
-    // Si le fichier n'est pas en RAM, on va le chercher dans le Garde-Manger (IndexedDB)
-    if (!track.file) {
-        track.file = await getFileFromDB(track.id);
-    }
+    if (!track.file) track.file = await getFileFromDB(track.id);
 
     if (track.file) {
         const url = URL.createObjectURL(track.file);
@@ -82,7 +82,7 @@ async function playTrack(plIndex, tIndex) {
         audioPlayer.play().catch(() => console.log("Attente clic..."));
         switchView('fitness');
     } else {
-        alert("Fichier introuvable. Veuillez recharger ce morceau.");
+        alert("Fichier introuvable.");
     }
 }
 
@@ -90,16 +90,16 @@ async function playTrack(plIndex, tIndex) {
 async function handleFiles(files) {
     if (currentPlaylistIndex === null) return;
     for (let file of files) {
-        const fileId = Date.now() + "-" + file.name; // ID unique
-        playlists[currentPlaylistIndex].tracks.push({ name: file.name.replace('.mp3', ''), id: fileId, file: file });
+        const fileId = Date.now() + "-" + file.name;
         await saveFileToDB(fileId, file);
+        playlists[currentPlaylistIndex].tracks.push({ name: file.name.replace('.mp3', ''), id: fileId, file: file });
     }
-    savePlaylistsToStorage();
+    saveStructureToDB();
 }
 
-// --- FONCTIONS DE LA BASE DE DONNÉES ---
+// --- OPÉRATIONS DE BASE DE DONNÉES (Zéro LocalStorage) ---
 function saveFileToDB(id, file) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         const tx = db.transaction("files", "readwrite");
         tx.objectStore("files").put(file, id);
         tx.oncomplete = () => resolve();
@@ -107,35 +107,36 @@ function saveFileToDB(id, file) {
 }
 
 function getFileFromDB(id) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         const tx = db.transaction("files", "readonly");
         const req = tx.objectStore("files").get(id);
         req.onsuccess = () => resolve(req.result);
     });
 }
 
-function deleteFileFromDB(id) {
-    const tx = db.transaction("files", "readwrite");
-    tx.objectStore("files").delete(id);
-}
-
-// --- SAUVEGARDE ET CHARGEMENT ---
-function savePlaylistsToStorage() {
-    const data = playlists.map(p => ({ name: p.name, tracks: p.tracks.map(t => ({ name: t.name, id: t.id })) }));
-    localStorage.setItem('hitclub_playlists_v2', JSON.stringify(data));
+function saveStructureToDB() {
+    const data = playlists.map(p => ({ 
+        name: p.name, 
+        tracks: p.tracks.map(t => ({ name: t.name, id: t.id })) 
+    }));
+    const tx = db.transaction("config", "readwrite");
+    tx.objectStore("config").put(data, "playlists");
     render();
 }
 
-function loadPlaylistsFromStorage() {
-    const data = localStorage.getItem('hitclub_playlists_v2');
-    if (data) playlists = JSON.parse(data);
-    render();
+function loadAllFromDB() {
+    const tx = db.transaction("config", "readonly");
+    const req = tx.objectStore("config").get("playlists");
+    req.onsuccess = () => {
+        if (req.result) playlists = req.result;
+        render();
+    };
 }
 
-// --- LE RESTE DES FONCTIONS (Playlist, Delete, Render) ---
+// --- INTERFACE ---
 function createNewPlaylist() {
     const name = prompt("Nom de la playlist :");
-    if (name) { playlists.push({ name: name, tracks: [] }); savePlaylistsToStorage(); }
+    if (name) { playlists.push({ name: name, tracks: [] }); saveStructureToDB(); }
 }
 
 function triggerFileInput(index) {
@@ -145,9 +146,19 @@ function triggerFileInput(index) {
 
 async function deleteTrack(plIndex, tIndex) {
     if (confirm("Supprimer ?")) {
-        deleteFileFromDB(playlists[plIndex].tracks[tIndex].id);
+        const tx = db.transaction("files", "readwrite");
+        tx.objectStore("files").delete(playlists[plIndex].tracks[tIndex].id);
         playlists[plIndex].tracks.splice(tIndex, 1);
-        savePlaylistsToStorage();
+        saveStructureToDB();
+    }
+}
+
+function deletePlaylist(plIndex) {
+    if (confirm("Supprimer toute la liste ?")) {
+        const tx = db.transaction("files", "readwrite");
+        playlists[plIndex].tracks.forEach(t => tx.objectStore("files").delete(t.id));
+        playlists.splice(plIndex, 1);
+        saveStructureToDB();
     }
 }
 
@@ -170,7 +181,9 @@ function render() {
 }
 
 audioPlayer.onended = () => {
-    let next = (playingIndices.tr + 1) % playlists[playingIndices.pl].tracks.length;
-    if (isShuffle) next = Math.floor(Math.random() * playlists[playingIndices.pl].tracks.length);
+    if (playingIndices.pl === null) return;
+    const currentPL = playlists[playingIndices.pl];
+    let next = (playingIndices.tr + 1) % currentPL.tracks.length;
+    if (isShuffle) next = Math.floor(Math.random() * currentPL.tracks.length);
     playTrack(playingIndices.pl, next);
 };
