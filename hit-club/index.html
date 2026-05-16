@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HIT-CLUB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00f3ff">
+</head>
+<body>
 
+    <div id="app-container">
+        <header>
+            <h1>HIT-CLUB</h1>
+            <div id="mode-selector">
+                <button onclick="switchView('playlist')">LISTES</button>
+                <button onclick="switchView('fitness')">FITNESS</button>
+            </div>
+        </header>
+
+        <main id="playlist-view" class="view active">
+    <div class="controls-top">
+        <button id="add-playlist-btn" onclick="createNewPlaylist()">+ NOUVELLE PLAYLIST</button>
+    </div>
+    
+    <input type="file" id="file-input" multiple accept="audio/*" style="display:none" onchange="handleFiles(this.files)">
+
+    <div id="playlist-container">
+        </div>
+</main>
+
+<main id="fitness-view" class="view">
+    <div id="digital-clock">00:00:00</div>
+    
+    <div class="chrono-controls">
+        <button id="start-stop-btn" onclick="toggleChrono()">DÉMARRER</button>
+        <button id="reset-btn" onclick="resetChrono()">RESET</button>
+    </div>
+
+    <div id="track-info">
+        <span id="current-track-name">EN ATTENTE...</span>
+    </div>
+</main>        
+
+       <footer>
+    <div class="player-controls">
+        <button id="shuffle-btn" onclick="toggleShuffle()">SHUFFLE: OFF</button>
+        <audio id="main-audio-player" controls></audio>
+    </div>
+</footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Enregistrement du Service Worker pour l'installation Android
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
