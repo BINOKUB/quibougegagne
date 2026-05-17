@@ -269,3 +269,32 @@ button:hover {
     }
 
 }
+
+footer {
+    margin-top: auto; /* Pousse le footer vers le bas si la page est courte */
+    padding: 50px 20px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(20, 20, 20, 0.95);
+    border-top: 1px solid var(--accent);
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.footer-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    text-shadow: 0 0 15px var(--accent);
+    color: #fff;
+    transform: scale(1.05);
+}
