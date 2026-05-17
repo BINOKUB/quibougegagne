@@ -11,18 +11,9 @@ const titleDisplay = document.getElementById('track-title');
 
 // Liste exacte de tes 26 fichiers (basée sur ton terminal)
 const playlist = [
-    "MASTERED_HARDANCE-HIT-CLUB-1.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-2.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-3.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-4.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-5.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-6.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-7.mp3",
     "MASTERED_HARDANCE-HIT-CLUB-8.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-9.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-10.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-11.mp3"
-];
+    "MASTERED_HARDANCE-HIT-CLUB-9.mp3"
+    ];
 
 let currentTrackIndex = 0;
 
