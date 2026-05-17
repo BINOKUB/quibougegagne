@@ -1,5 +1,5 @@
 /* PROJET : QUI BOUGE GAGNE
-   FICHIER : js/core.js
+   FICHIER : js/core.js 
    REVISION : 03 - Indexation réelle des 26 pistes
    DESCRIPTION : Moteur audio avec lecture aléatoire (Shuffle)
 */
