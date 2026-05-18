@@ -298,3 +298,16 @@ footer {
     color: #fff;
     transform: scale(1.05);
 }
+
+
+.track-link {
+    color: var(--accent);
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.track-link:hover {
+    text-shadow: 0 0 15px var(--accent);
+    filter: brightness(1.2);
+}
