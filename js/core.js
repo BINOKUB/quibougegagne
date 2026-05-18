@@ -11,15 +11,6 @@ const titleDisplay = document.getElementById('track-title');
 
 // Liste de tes fichiers originaux (le script ajoutera 'prev_' tout seul)
 const playlist = [
-    "MASTERED_HARDANCE.mp3",
-    "MASTERED_HARDANCE-HIT-01.mp3",
-    "MASTERED_HARDANCE-HIT--Abyssal.mp3",
-    "MASTERED_HARDANCE-HIT--Abyssal-2.mp3",
-    "MASTERED_HARDANCE-HIT-Acid.mp3",
-    "MASTERED_HARDANCE-HIT-Acid-2.mp3",
-    "MASTERED_HARDANCE-HIT-Bloom.mp3",
-    "MASTERED_HARDANCE-HIT-Bloom-2.mp3",
-    "MASTERED_HARDANCE-HIT-Blue_Note.mp3",
     "MASTERED_HARDANCE-HIT-CLUB-1.mp3",
     "MASTERED_HARDANCE-HIT-CLUB-2.mp3",
     "MASTERED_HARDANCE-HIT-CLUB-3.mp3",
@@ -30,14 +21,8 @@ const playlist = [
     "MASTERED_HARDANCE-HIT-CLUB-8.mp3",
     "MASTERED_HARDANCE-HIT-CLUB-9.mp3",
     "MASTERED_HARDANCE-HIT-CLUB-10.mp3",
-    "MASTERED_HARDANCE-HIT-CLUB-11.mp3",
-    "MASTERED_HARDANCE-HIT-PERCUSSIVE-1.mp3",
-    "MASTERED_HARDANCE-HIT-PERCUSSIVE-2.mp3",
-    "MASTERED_HARDANCE-HIT-PERCUSSIVE-3.mp3",
-    "MASTERED_HARDANCE-HIT-PERCUSSIVE-4.mp3",
-    "MASTERED_HARDANCE-HIT-PULSE.mp3",
-    "MASTERED_HARDANCE-HIT-Pulse-2.mp3"
-];
+    "MASTERED_HARDANCE-HIT-CLUB-11.mp3"
+    ];
 
 let currentTrackIndex = 0;
 
