@@ -6,10 +6,15 @@
     <title>Boutique - HIT-CLUB</title>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
-    :root { --accent: #00f3ff; --bg: #121212; --card-bg: #1a1a1a; }
+    :root { 
+        --accent: #00f3ff; 
+        --recovery: #bb86fc; 
+        --bg: #121212; 
+        --card-bg: #1a1a1a; 
+    }
     
     body {
-        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('images/fond_boutique.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.92)), url('images/fond_boutique.jpg');
         background-size: cover; background-attachment: fixed;
         color: #fff; font-family: 'Urbanist', sans-serif; margin: 0; padding: 40px 20px;
     }
@@ -19,40 +24,42 @@
     h1 { font-family: 'Orbitron', sans-serif; color: var(--accent); text-align: center; letter-spacing: 5px; margin-bottom: 50px; text-transform: uppercase; }
     
     h2 { font-family: 'Orbitron', sans-serif; border-left: 4px solid var(--accent); padding-left: 15px; margin-top: 60px; font-size: 20px; color: #ccc; }
+    h2.recovery-title { border-left-color: var(--recovery); color: var(--recovery); }
 
-    /* GRILLE DE PRODUITS */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
 
     .card {
         background: var(--card-bg); border: 1px solid #333; border-radius: 10px; padding: 15px;
         transition: 0.3s; position: relative; overflow: hidden;
     }
-    .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2); }
+    .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1); }
+    .card.recovery-card:hover { border-color: var(--recovery); box-shadow: 0 10px 30px rgba(187, 134, 252, 0.1); }
 
-    /* NOUVEAU LAYOUT HORIZONTAL */
     .card-content { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; text-align: left; }
-
     .product-thumb { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; border: 1px solid #444; }
-
     .product-info { flex: 1; display: flex; flex-direction: column; }
 
     .item-title { font-size: 16px; font-weight: bold; margin-bottom: 2px; color: #eee; }
     .item-price { color: var(--accent); font-family: 'Orbitron'; font-size: 18px; margin-bottom: 8px; }
+    .recovery-price { color: var(--recovery); }
 
-    /* BOUTONS */
     .btn-buy {
         display: block; width: 100%; padding: 12px; background: var(--accent); color: #000;
         text-decoration: none; font-weight: bold; border-radius: 5px; text-transform: uppercase; font-size: 13px; transition: 0.3s; text-align: center;
     }
     .btn-buy:hover { background: #fff; box-shadow: 0 0 15px var(--accent); }
+    .btn-recovery { background: var(--recovery); }
+    .btn-recovery:hover { box-shadow: 0 0 15px var(--recovery); }
 
     .btn-preview { 
         background: none; border: 1px solid #555; color: #ccc; padding: 5px 10px; border-radius: 5px; 
         cursor: pointer; font-size: 11px; text-transform: uppercase; align-self: flex-start;
     }
     .btn-preview:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-preview-recovery:hover { border-color: var(--recovery); color: var(--recovery); }
 
-    .tag-soon { position: absolute; top: 10px; right: -30px; background: #ffbc00; color: #000; padding: 5px 35px; transform: rotate(45deg); font-weight: bold; font-size: 10px; }
+    .tag-soon { position: absolute; top: 10px; right: -30px; background: var(--accent); color: #000; padding: 5px 35px; transform: rotate(45deg); font-weight: bold; font-size: 10px; }
+    .tag-recovery { background: var(--recovery); }
 
     .footer-nav { text-align: center; margin-top: 80px; padding-top: 20px; border-top: 1px solid #333; }
     .btn-retour { color: #777; text-decoration: none; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; }
@@ -64,210 +71,161 @@
     <div class="container">
         <h1>Boutique HIT-CLUB</h1>
 
-        <h2>⚡ ARSENAL SONORE (2,00$ / PISTE)</h2>
+        <h2>⚡ ARSENAL HARDGROOVE (138 BPM)</h2>
         <div class="grid">
-
-
-
-                <div class="card" style="border: 2px solid var(--accent); background: rgba(0, 243, 255, 0.05);">
-    <div class="tag-soon" style="background: var(--accent); color: #000;">BEST VALUE</div>
-    <div class="card-content">
-        <img src="images/logo-hit-club.png" alt="Album Complet" class="product-thumb">
-        <div class="product-info">
-            <span class="item-title" style="color: var(--accent); font-size: 18px;">PACK COMPLET (11 TITRES)</span>
-            <span class="item-price">15,00 $</span>
-            <small style="color: #888;">Format ZIP - Haute Qualité</small>
-        </div>
-    </div>
-    <a href="https://buy.stripe.com/4gM00k2mn7Q89qa0LZbsc0b" target="_new" class="btn-buy">Télécharger l'Album</a>
-</div>
-
-
-
-
-
-         <div class="card">
+            <div class="card" style="border: 2px solid var(--accent); background: rgba(0, 243, 255, 0.05);">
+                <div class="tag-soon">BEST VALUE</div>
                 <div class="card-content">
-                    <img src="images/logo-hit-club.png" alt="Hardance #1" class="product-thumb">
+                    <img src="images/logo-hit-club.png" alt="Album Complet" class="product-thumb">
                     <div class="product-info">
-                        <span class="item-title">Hit-Club #1</span>
-                        <span class="item-price">2,00 $</span>
-                         </div>
+                        <span class="item-title" style="color: var(--accent); font-size: 18px;">PACK COMPLET (11 TITRES)</span>
+                        <span class="item-price">15,00 $</span>
+                        <small style="color: #888;">Format ZIP - Haute Qualité</small>
+                    </div>
+                </div>
+                <a href="https://buy.stripe.com/4gM00k2mn7Q89qa0LZbsc0b" target="_new" class="btn-buy">Télécharger l'Album</a>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #1</span><span class="item-price">2,00 $</span></div>
                 </div>
                 <a href="https://buy.stripe.com/8x214oe552vOfOy52fbsc06" target="_new" class="btn-buy">Acheter MP3</a>
                 <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-1.mp3')">▶ Aperçu</button>
             </div>
 
-
-
-
-        <div class="card">
+            <div class="card">
                 <div class="card-content">
-                    <img src="images/logo-hit-club.png" alt="Hardance #2" class="product-thumb">
-                    <div class="product-info">
-                        <span class="item-title">Hit-Club #2</span>
-                        <span class="item-price">2,00 $</span>
-                         </div>
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #2</span><span class="item-price">2,00 $</span></div>
                 </div>
-                <a href="https://buy.stripe.com/eVqdRae555I059U52fbsc07" target="_new" class="btn-buy">Acheter MP3</a>
+                <a href="https://buy.stripe.com/4gM3cC1ij1rKdGmcN6" target="_new" class="btn-buy">Acheter MP3</a>
                 <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-2.mp3')">▶ Aperçu</button>
             </div>
 
-
-
-         <div class="card">
+            <div class="card">
                 <div class="card-content">
-                    <img src="images/logo-hit-club.png" alt="Hardance #3" class="product-thumb">
-                    <div class="product-info">
-                        <span class="item-title">Hit-Club #3</span>
-                        <span class="item-price">2,00 $</span>
-                         </div>
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #3</span><span class="item-price">2,00 $</span></div>
                 </div>
-                <a href="https://buy.stripe.com/aFaeVeaSTgmE6dYcuHbsc08" target="_new" class="btn-buy">Acheter MP3</a>
+                <a href="https://buy.stripe.com/cN24gG5yz0nGdGm7sy" target="_new" class="btn-buy">Acheter MP3</a>
                 <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-3.mp3')">▶ Aperçu</button>
             </div>
 
-
-
+            <div class="card">
+                <div class="card-content">
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #4</span><span class="item-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/14k7sS4uv8UcfOy8wA" target="_new" class="btn-buy">Acheter MP3</a>
+                <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-4.mp3')">▶ Aperçu</button>
+            </div>
 
             <div class="card">
                 <div class="card-content">
-                    <img src="images/logo-hit-club.png" alt="Hardance #4" class="product-thumb">
-                    <div class="product-info">
-                        <span class="item-title">Hit-Club #4</span>
-                        <span class="item-price">2,00 $</span>
-                         </div>
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #5</span><span class="item-price">2,00 $</span></div>
                 </div>
-                <a href="https://buy.stripe.com/fZudRa8KL1rKdGq1Q3bsc09" target="_new" class="btn-buy">Acheter MP3</a>
-                <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-4.mp3')">▶ Aperçu</button>
-            </div>
-        
-
-
-
-             <div class="card">
-                <div class="card-content">
-                    <img src="images/logo-hit-club.png" alt="Hardance #5" class="product-thumb">
-                    <div class="product-info">
-                        <span class="item-title">Hit-Club #5</span>
-                        <span class="item-price">2,00 $</span>
-                         </div>
-                </div>
-                <a href="https://buy.stripe.com/7sYbJ29OP7Q89qa7anbsc0a" target="_new" class="btn-buy">Acheter MP3</a>
+                <a href="https://buy.stripe.com/6ge28ygdd2vO45W5ky" target="_new" class="btn-buy">Acheter MP3</a>
                 <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-5.mp3')">▶ Aperçu</button>
             </div>
 
-
-
-
-
-
-            
             <div class="card">
                 <div class="card-content">
-                    <img src="images/logo-hit-club.png" alt="Hardance #6" class="product-thumb">
-                    <div class="product-info">
-                        <span class="item-title">Hit-Club #6</span>
-                        <span class="item-price">2,00 $</span>
-                         </div>
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #6</span><span class="item-price">2,00 $</span></div>
                 </div>
-                <a href="https://buy.stripe.com/aFa7sM6CD2vOdGq0LZbsc00" target="_new" class="btn-buy">Acheter MP3</a>
+                <a href="https://buy.stripe.com/dR67sS0ef7Q80TK7sC" target="_new" class="btn-buy">Acheter MP3</a>
                 <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-6.mp3')">▶ Aperçu</button>
             </div>
 
-
-
-
             <div class="card">
                 <div class="card-content">
-                    <img src="images/logo-hit-club.png" alt="Techno #7" class="product-thumb">
-                    <div class="product-info">
-                        <span class="item-title">Hit Club #7</span>
-                        <span class="item-price">2,00 $</span>
-                       </div>
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #7</span><span class="item-price">2,00 $</span></div>
                 </div>
-                <a href="https://buy.stripe.com/28E5kEbWXc6ogSC3Ybbsc01" target="_new" class="btn-buy">Acheter MP3</a>
-               <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-7.mp3')">▶ Aperçu</button>
+                <a href="https://buy.stripe.com/eVa28ygdd5I01XOfY8" target="_new" class="btn-buy">Acheter MP3</a>
+                <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-7.mp3')">▶ Aperçu</button>
             </div>
 
-
-<div class="card">
-    <div class="card-content">
-        <img src="images/logo-hit-club.png" alt="Techno #8" class="product-thumb">
-        <div class="product-info">
-            <span class="item-title">Hit Club #8</span>
-            <span class="item-price">2,00 $</span>
-               </div>
-    </div>
-    <a href="https://buy.stripe.com/28E7sMgddfiA1XI8erbsc02" target="_new" class="btn-buy">Acheter MP3</a>
-<button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-8.mp3')">▶ Aperçu</button>
-</div>
-
-
-
-
-<div class="card">
-    <div class="card-content">
-        <img src="images/logo-hit-club.png" alt="Techno #9" class="product-thumb">
-        <div class="product-info">
-            <span class="item-title">Hit Club #9</span>
-            <span class="item-price">2,00 $</span>
-          </div>
-    </div>
-    <a href="https://buy.stripe.com/cNi8wQ0ef1rK45Q0LZbsc03" target="_new" class="btn-buy">Acheter MP3</a>
-<button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-9.mp3')">▶ Aperçu</button>
-</div>
-
-
-<div class="card">
-    <div class="card-content">
-        <img src="images/logo-hit-club.png" alt="Techno #10" class="product-thumb">
-        <div class="product-info">
-            <span class="item-title">Hit Club #10</span>
-            <span class="item-price">2,00 $</span>
-          </div>
-    </div>
-    <a href="https://buy.stripe.com/14A14o8KLdasbyibqDbsc04" target="_new" class="btn-buy">Acheter MP3</a>
-<button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-10.mp3')">▶ Aperçu</button>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <img src="images/logo-hit-club.png" alt="Techno #11" class="product-thumb">
-        <div class="product-info">
-            <span class="item-title">Hit Club #11</span>
-            <span class="item-price">2,00 $</span>
-          </div>
-    </div>
-    <a href="https://buy.stripe.com/7sY9AU4uvfiAdGq2U7bsc05" target="_new" class="btn-buy">Acheter MP3</a>
-<button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-11.mp3')">▶ Aperçu</button>
-</div>
-
-
-
-
-</div>
-
-
-            
-
-
-        
-
-        <h2>🧢 ÉQUIPEMENT & STYLE (PROCHAINEMENT)</h2>
-        <div class="grid">
             <div class="card">
-                <div class="tag-soon">Bientôt</div>
                 <div class="card-content">
-                    <div class="product-thumb" style="display:flex; align-items:center; justify-content:center; font-size:30px; background:#222;">🧢</div>
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #8</span><span class="item-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/00g4gG5yzcwAfOy3cg" target="_new" class="btn-buy">Acheter MP3</a>
+                <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-8.mp3')">▶ Aperçu</button>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #9</span><span class="item-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/bIY3cC0ef6M4aue8wH" target="_new" class="btn-buy">Acheter MP3</a>
+                <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-9.mp3')">▶ Aperçu</button>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #10</span><span class="item-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/14k9Ba4uv4DY6a64go" target="_new" class="btn-buy">Acheter MP3</a>
+                <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-10.mp3')">▶ Aperçu</button>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <img src="images/logo-hit-club.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Hit-Club #11</span><span class="item-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/5kA5kKd11cwAfOy28f" target="_new" class="btn-buy">Acheter MP3</a>
+                <button class="btn-preview" onclick="togglePlay(this, 'previews/prev_MASTERED_HARDANCE-HIT-CLUB-11.mp3')">▶ Aperçu</button>
+            </div>
+        </div>
+
+        <h2 class="recovery-title">🧘 RECOVERY-CLUB (RELAXATION VOL. 1)</h2>
+        <div class="grid">
+            <div class="card recovery-card" style="border: 2px solid var(--recovery); background: rgba(187, 134, 252, 0.05);">
+                <div class="tag-soon tag-recovery">BEST VALUE</div>
+                <div class="card-content">
+                    <img src="images/logo_HIT-CLUB-RELAX.png" alt="Relaxation Vol 1" class="product-thumb">
                     <div class="product-info">
-                        <span class="item-title">Casquette HIT-CLUB</span>
-                        <span class="item-price">-- $</span>
+                        <span class="item-title" style="color: var(--recovery); font-size: 18px;">RECOVERY VOL. 1 (12 TITRES)</span>
+                        <span class="item-price recovery-price">15,00 $</span>
+                        <small style="color: #888;">Format ZIP - Lissé à -14 LUFS</small>
                     </div>
                 </div>
-                <a href="#" class="btn-buy" style="background: #444; cursor: not-allowed;">Indisponible</a>
+                <a href="https://buy.stripe.com/14A28s7GH9Yg1XI7anbsc0f" target="_new" class="btn-buy btn-recovery">Télécharger le Pack</a>
+            </div>
+
+            <div class="card recovery-card">
+                <div class="card-content">
+                    <img src="images/logo_HIT-CLUB-RELAX.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Voyager 11</span><span class="item-price recovery-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/28E14o0ef0nG1XIdyLbsc0d" target="_new" class="btn-buy btn-recovery">Acheter MP3</a>
+                <button class="btn-preview btn-preview-recovery" onclick="togglePlay(this, 'relax_previews/prev_VOYAGER 11.mp3')">▶ Aperçu</button>
+            </div>
+
+            <div class="card recovery-card">
+                <div class="card-content">
+                    <img src="images/logo_HIT-CLUB-RELAX.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Voyager 6</span><span class="item-price recovery-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/fZu8wQ8KL2vOgSCamzbsc0c" target="_new" class="btn-buy btn-recovery">Acheter MP3</a>
+                <button class="btn-preview btn-preview-recovery" onclick="togglePlay(this, 'relax_previews/prev_VOYAGER 6.mp3')">▶ Aperçu</button>
+            </div>
+
+            <div class="card recovery-card">
+                <div class="card-content">
+                    <img src="images/logo_HIT-CLUB-RELAX.png" class="product-thumb">
+                    <div class="product-info"><span class="item-title">Voyager 9</span><span class="item-price recovery-price">2,00 $</span></div>
+                </div>
+                <a href="https://buy.stripe.com/aFa28s1ij4DW1XIcuHbsc0e" target="_new" class="btn-buy btn-recovery">Acheter MP3</a>
+                <button class="btn-preview btn-preview-recovery" onclick="togglePlay(this, 'relax_previews/prev_VOYAGER 9.mp3')">▶ Aperçu</button>
             </div>
         </div>
 
@@ -277,39 +235,29 @@
     </div>
 
 <script>
-// MOTEUR AUDIO HIT-CLUB
 let currentAudio = null;
 let currentBtn = null;
 
 function togglePlay(btn, audioUrl) {
-    // Si on clique sur le même bouton : on arrête
     if (currentAudio && currentBtn === btn) {
         currentAudio.pause();
         currentAudio = null;
         btn.innerHTML = "▶ Aperçu";
         return;
     }
-
-    // Si une autre piste joue déjà : on l'éteint
     if (currentAudio) {
         currentAudio.pause();
         currentBtn.innerHTML = "▶ Aperçu";
     }
-
-    // Lancement de la nouvelle piste
     currentAudio = new Audio(audioUrl);
     currentBtn = btn;
     currentAudio.play();
     btn.innerHTML = "⏸ Pause";
-
-    // Remise à zéro auto quand l'extrait finit
     currentAudio.onended = function() {
         btn.innerHTML = "▶ Aperçu";
         currentAudio = null;
     };
 }
 </script>
-
-
 </body>
 </html>
