@@ -300,14 +300,35 @@ footer {
 }
 
 
+/* STYLE DU TITRE CLIQUABLE - REVISION 06 */
 .track-link {
     color: var(--accent);
     text-decoration: none;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    padding-bottom: 2px;
+    /* La "ligne de vie" : une bordure pointillée subtile */
+    border-bottom: 1px dashed rgba(0, 243, 255, 0.4); 
 }
 
 .track-link:hover {
+    /* Effet d'activation au survol */
+    color: #fff;
+    border-bottom: 1px solid var(--accent);
     text-shadow: 0 0 15px var(--accent);
     filter: brightness(1.2);
+    transform: translateY(-1px); /* Léger soulèvement */
+}
+
+/* Petit indicateur discret "SHOP" qui n'apparaît qu'au survol (Optionnel) */
+.track-link::after {
+    content: ' 🛒';
+    font-size: 10px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.track-link:hover::after {
+    opacity: 1;
 }
