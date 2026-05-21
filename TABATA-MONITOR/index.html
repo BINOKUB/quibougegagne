@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minuteur Tabata | Qui bouge Gagne</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#39ff14">
+<link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body class="theme-vert"> <div class="app-container">
+        
+        <header class="config-panel">
+            <div class="control-group">
+                <label>THÈME INTERFACE</label>
+                <div class="theme-buttons">
+                    <button class="btn-theme active" onclick="setTheme('vert')">VERT</button>
+                    <button class="btn-theme" onclick="setTheme('orange')">ORANGE</button>
+                    <button class="btn-theme" onclick="setTheme('rose')">ROSE</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>VOLUME DU BLOC (CYCLES)</label>
+                <div class="cycle-presets">
+                    <button class="btn-preset active" onclick="setPresetCycles(8)">8 CYCLES (4 MIN)</button>
+                    <button class="btn-preset" onclick="setPresetCycles(40)">40 CYCLES (20 MIN)</button>
+                </div>
+                <div class="custom-input-group">
+                    <label for="custom-cycles">SUR MESURE :</label>
+                    <input type="number" id="custom-cycles" min="1" max="99" value="8" onchange="setCustomCycles(this.value)">
+                </div>
+            </div>
+        </header>
+
+        <main class="display-panel">
+            <div class="counter-box">
+                <div id="phase-title" class="phase-display">PRÊT</div>
+                <div id="time-display" class="time-display">00</div>
+                <div id="cycle-display" class="cycle-counter">CYCLE : 0 / <span id="total-cycles-display">8</span></div>
+            </div>
+        </main>
+
+        <footer class="action-panel">
+            <button id="main-action-btn" class="btn-start" onclick="toggleTimer()">DÉMARRER</button>
+        </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+
+<script>
+    // Activation du Service Worker pour l'autonomie hors-ligne
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('Blindage hors-ligne activé.', reg.scope))
+            .catch((err) => console.log('Échec du blindage:', err));
+        });
+    }
+</script>
+
+</body>
+</html>
