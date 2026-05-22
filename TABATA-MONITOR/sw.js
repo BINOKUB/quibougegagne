@@ -4,7 +4,7 @@
 //               des actifs HTML/CSS/JS et de la banque audio complète.
 // ========================================================================
 
-const CACHE_NAME = 'tabata-qbg-v2';
+const CACHE_NAME = 'tabata-qbg-v3';
 
 // L'ARSENAL COMPLET À TÉLÉCHARGER DANS LE TÉLÉPHONE
 const ASSETS = [
