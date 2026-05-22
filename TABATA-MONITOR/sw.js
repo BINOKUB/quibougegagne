@@ -4,7 +4,7 @@
 //               des actifs HTML/CSS/JS et de la banque audio complète.
 // ========================================================================
 
-const CACHE_NAME = 'tabata-qbg-v1';
+const CACHE_NAME = 'tabata-qbg-v2';
 
 // L'ARSENAL COMPLET À TÉLÉCHARGER DANS LE TÉLÉPHONE
 const ASSETS = [
@@ -12,14 +12,14 @@ const ASSETS = [
   './style.css',
   './app.js',
   './manifest.json',
-  '../audio/prep.mp3',
-  '../audio/3.mp3',
-  '../audio/2.mp3',
-  '../audio/1.mp3',
-  '../audio/go.mp3',
-  '../audio/stop.mp3',
-  '../audio/alerte.mp3',
-  '../audio/fin.mp3'
+  '../audio/prep.wav',
+  '../audio/3.wav',
+  '../audio/2.wav',
+  '../audio/1.wav',
+  '../audio/go.wav',
+  '../audio/stop.wav',
+  '../audio/alerte.wav',
+  '../audio/fin.wav'
 ];
 
 // PHASE D'INSTALLATION : Téléchargement forcé de la liste
