@@ -41,3 +41,18 @@ self.addEventListener('fetch', (e) => {
     })
   );
 });
+
+
+// PHASE DE NETTOYAGE : Destruction absolue des anciens coffres-forts
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        if (key !== CACHE_NAME) {
+          console.log('[Service Worker] Destruction de l\'ancien cache:', key);
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+});
