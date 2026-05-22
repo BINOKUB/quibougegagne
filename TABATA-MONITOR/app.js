@@ -25,14 +25,14 @@ const AUDIO_PATH = '../audio/';
 
 // PRÉCHARGEMENT DES ACTIFS AUDIO DE LUXE (Élimine le délai de lecture)
 const audioBank = {
-    prep: new Audio(`${AUDIO_PATH}prep.mp3`),
-    count3: new Audio(`${AUDIO_PATH}3.mp3`),
-    count2: new Audio(`${AUDIO_PATH}2.mp3`),
-    count1: new Audio(`${AUDIO_PATH}1.mp3`),
-    go: new Audio(`${AUDIO_PATH}go.mp3`),
-    stop: new Audio(`${AUDIO_PATH}stop.mp3`),
-    alerte: new Audio(`${AUDIO_PATH}alerte.mp3`),
-    fin: new Audio(`${AUDIO_PATH}fin.mp3`)
+    prep: new Audio(`${AUDIO_PATH}prep.wav`),
+    count3: new Audio(`${AUDIO_PATH}3.wav`),
+    count2: new Audio(`${AUDIO_PATH}2.wav`),
+    count1: new Audio(`${AUDIO_PATH}1.wav`),
+    go: new Audio(`${AUDIO_PATH}go.wav`),
+    stop: new Audio(`${AUDIO_PATH}stop.wav`),
+    alerte: new Audio(`${AUDIO_PATH}alerte.wav`),
+    fin: new Audio(`${AUDIO_PATH}fin.wav`)
 };
 
 // INITIALISATION DU CONTEXTE AUDIO (Pour les bips électroniques industriels en couche de fond)
