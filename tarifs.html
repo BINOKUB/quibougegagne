@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hit Club - Tarifs et Règlements</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Conteneur principal de la page */
+        .page-container {
+            width: 100%;
+            max-width: 750px;
+            background: #141414;
+            border: 3px solid #ff3e3e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+        }
+
+        /* En-tête de la page aux couleurs du Hit Club */
+        .page-header {
+            background: linear-gradient(135deg, #ff9f43, #ff3e3e);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 3px solid #ff3e3e;
+        }
+
+        .page-header h1 {
+            font-size: 28pt;
+            color: #141414;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .page-header p {
+            font-size: 12pt;
+            color: #ffffff;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Section centrale : Le contrat Noir sur Blanc */
+        .contract-box {
+            background-color: #ffffff;
+            color: #141414;
+            padding: 40px;
+            font-family: Arial, sans-serif; /* Plus lisible pour le texte de loi */
+        }
+
+        .contract-box h2 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 18pt;
+            text-transform: uppercase;
+            border-bottom: 3px solid #141414;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Grille des tarifs */
+        .pricing-grid {
+            margin-bottom: 35px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px dashed #cccccc;
+        }
+
+        .price-row:last-child {
+            border-bottom: 2px solid #141414;
+        }
+
+        .price-name {
+            font-weight: bold;
+            font-size: 13pt;
+        }
+
+        .price-name span {
+            display: block;
+            font-size: 10pt;
+            color: #666666;
+            font-weight: normal;
+            margin-top: 4px;
+        }
+
+        .price-value {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 18pt;
+            color: #ff3e3e;
+        }
+
+        .price-value.regular {
+            color: #141414;
+        }
+
+        /* Bloc de la règle d'acier */
+        .rule-section {
+            background-color: #f8f9fa;
+            border-left: 5px solid #ff3e3e;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .rule-section h3 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 12pt;
+            text-transform: uppercase;
+            color: #ff3e3e;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .rule-section p {
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #222222;
+        }
+
+        .rule-section ul {
+            margin-top: 10px;
+            margin-left: 20px;
+            font-size: 10.5pt;
+            color: #333333;
+            line-height: 1.4;
+        }
+
+        .rule-section li {
+            margin-bottom: 8px;
+        }
+
+        /* Pied de page avec bouton d'action */
+        .page-footer {
+            padding: 30px;
+            text-align: center;
+            background: #1a1a1a;
+        }
+
+        .btn-stripe {
+            display: inline-block;
+            background: #ff3e3e;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 18px 35px;
+            font-size: 14pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-stripe:hover {
+            background: #ff9f43;
+            color: #141414;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <div class="page-header">
+            <h1>Hit Club Matane</h1>
+            <p>Architecture d'entraînement haute performance</p>
+        </div>
+
+        <div class="contract-box">
+            <h2>Forfaits & Régulation Financière</h2>
+            
+            <div class="pricing-grid">
+                <div class="price-row">
+                    <div class="price-name">
+                        Engagement Initial (Forfait Complet)
+                        <span>Abonnement complet sécurisé en ligne avant la session</span>
+                    </div>
+                    <div class="price-value">200 $</div>
+                </div>
+                
+                <div class="price-row">
+                    <div class="price-name">
+                        Session unique (À la pièce)
+                        <span>Payable uniquement sur place à l'unité</span>
+                    </div>
+                    <div class="price-value regular">20 $ / h</div>
+                </div>
+            </div>
+
+            <div class="rule-section">
+                <h3>⚠️ LA RÈGLE DE L'ENGAGEMENT (Règlement Officiel)</h3>
+                <p><strong>Le rabais de 40 $ est une exclusivité strictement réservée aux participants sérieux qui verrouillent leur place pour les 12 semaines d'un coup, avant le coup d'envoi.</strong></p>
+                
+                <ul>
+                    <li>Si vous vous présentez au <strong>Cours #1</strong> sans avoir payé votre forfait en ligne, vous devez obligatoirement acquitter le tarif à la pièce de <strong>20 $</strong> pour accéder au plancher.</li>
+                    <li>Si vous décidez au <strong>Cours #2</strong> d'acheter le reste de la session, le privilège d'engagement est échu. Le montant exigé pour sécuriser les 11 semaines restantes sera de <strong>220 $</strong> (Valeur totale de 240 $ moins le cours #1 déjà payé).</li>
+                </ul>
+                
+                <p style="margin-top: 12px; font-size: 10pt; color: #555555; font-style: italic;">Aucune exception ne sera tolérée pour des motifs d'oubli, de retard ou d'absence de technologie. Le système gère les accès de façon automatisée.</p>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <a href="https://buy.stripe.com/eVq8wQ4uvc6ogSCgKXbsc0g" class="btn-stripe">Sécuriser mon accès en ligne</a>
+        </div>
+    </div>
+
+</body>
+</html>
