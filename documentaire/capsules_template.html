@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIT-CLUB - L'Encyclo du Métabolisme</title>
+    <link rel="stylesheet" href="hitclub_style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">HIT-CLUB</div>
+        <p class="subtitle">Bouge • Gagne • Santé Initiale</p>
+    </header>
+
+    <div class="container">
+        
+        <nav class="sidebar">
+            <h3>Capsules Disponibles</h3>
+            <ul id="menu-capsules">
+                <li><a href="#" class="menu-link active" data-target="capsule-leptine">🧠 La Leptine & l'Insuline</a></li>
+                <li><a href="#" class="menu-link" data-target="capsule-tabata">⏱️ Le Protocole Tabata & EPOC</a></li>
+                </ul>
+        </nav>
+
+
+        <main class="content-area" id="zone-contenu">
+            <article id="capsule-leptine" class="capsule-content">
+                <span class="badge-status">Axe : Hormones & Nutrition</span>
+                <h1>La Leptine : Pourquoi ton cerveau refuse parfois de brûler le gras ?</h1>
+                <p class="introduction">Tu t'entraînes fort, mais tu as tout le temps faim ? Tu as des rages de sucre inexplicables ? Le coupable n'est pas ton manque de volonté. C'est un court-circuit dans ton code hormonal.</p>
+                <h2>Le rôle de la Leptine</h2>
+                <p>La Leptine est l'hormone de la satiété, sécrétée par tes propres cellules adipeuses. Son rôle est d'envoyer un signal clair à l'hypothalamus dans ton cerveau : <em>« Les réserves d'énergie sont pleines, tu peux couper la faim et activer le métabolisme pour brûler les graisses. »</em></p>
+                <h2>Le bug : La résistance croisée avec l'Insuline</h2>
+                <p>Lorsque l'alimentation est trop riche en glucides raffinés ou que la fréquence des repas est trop élevée, l'<strong>insuline</strong> reste constamment élevée dans le sang. Le problème technique est majeur : <strong>une insuline chroniquement haute bloque les récepteurs de la leptine au niveau du cerveau.</strong></p>
+                <blockquote>« Ton corps a beau avoir des réserves de gras disponibles, le signal de satiété n'atteint plus sa cible. Ton cerveau est persuadé que tu es en train de mourir de faim. »</blockquote>
+                <h2>Les conséquences sur ton code métabolique</h2>
+                <ul>
+                    <li>Ralentissement drastique du métabolisme de repos (mode économie d'énergie).</li>
+                    <li>Déclenchement de rages de sucre incontrôlables pour forcer l'apport de carburant.</li>
+                </ul>
+                <div class="action-box">
+                    <h3>Des questions ou des réflexions sur cette capsule ?</h3>
+                    <p>Ne reste pas isolé. Rejoins la communauté pour partager ton avis et poser tes questions publiquement !</p>
+                    <a href="https://www.facebook.com/groups/ton-groupe-hitclub" target="_blank" class="btn-facebook">💬 Commenter et Débattre sur le Groupe Facebook</a>
+                </div>
+            </article>
+
+
+
+
+
+            <article id="capsule-tabata" class="capsule-content" style="display: none;">
+                <span class="badge-status">Axe : Entraînement & Performance</span>
+                <h1>Tabata : 4 minutes pour brûler pendant 48 heures ?</h1>
+                <p class="introduction">On entend souvent : <em>« Je n'ai pas le temps de m'entraînement. »</em> Au HIT-CLUB, le temps n'est pas une excuse, c'est une variable qu'on optimise grâce à la science de la haute intensité.</p>
+                <h2>L'intensité Supramaximale</h2>
+                <p>Contrairement au cardio traditionnel de longue durée, le protocole Tabata (20 secondes d'effort maximal, 10 secondes de repos, répété 8 fois) demande un effort à 170 % du VO2 max. Ce stress force le corps à utiliser simultanément les filières aérobies (oxygène) et anaérobies (sans oxygène). C'est un "hack" métabolique qui double l'efficacité de la séance.</p>
+                <h2>Qu'est-ce que l'effet EPOC ?</h2>
+                <p>L'EPOC (<em>Excess Post-exercise Oxygen Consumption</em>) est la quantité d'oxygène supplémentaire que ton corps doit consommer après l'exercice pour revenir à son état de repos. Plus l'intensité de ta séance est haute, plus la dette d'oxygène est monumentale.</p>
+                <blockquote>« Ton corps travaille en temps supplémentaire pour restaurer ses réserves d'énergie (ATP-CP), éliminer les sous-produits métaboliques et rééquilibrer tes hormones. »</blockquote>
+                <h2>L'impact sur 48 heures</h2>
+                <p>Des études montrent qu'une séance Tabata bien exécutée augmente le taux métabolique basal pendant près de deux jours. Alors qu'un jogging traditionnel s'arrête de brûler de l'énergie dès que tes pieds s'arrêtent de courir, le Tabata transforme ton corps en une chaudière à haute performance qui tourne en arrière-plan pendant que tu dors ou travailles.</p>
+                <ul>
+                    <li>Augmentation de la densité mitochondriale (plus d'usines à énergie dans tes cellules).</li>
+                    <li>Amélioration radicale de la sensibilité à l'insuline.</li>
+                    <li>Sécrétion naturelle d'hormone de croissance favorisant la rétention de la masse sèche.</li>
+                </ul>
+
+
+
+
+
+
+
+
+                <div class="action-box">
+                    <h3>Prêt à relever le défi des 4 minutes ?</h3>
+                    <p>Viens donner ton feedback ou partager tes chronos avec l'Escadron sur la publication officielle !</p>
+                    <a href="https://www.facebook.com/groups/36760684730197440" target="_blank" class="btn-facebook">💬 Commenter et Débattre sur le Groupe Facebook</a>
+                </div>
+            </article>
+
+
+
+            </main>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.menu-link:not(.disabled)').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.capsule-content').forEach(content => { content.style.display = 'none'; });
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
