@@ -1,0 +1,33 @@
+<!-- Révision v1.0 - Intégration initiale du générateur QR et structure de base - index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur QR Code Tactique</title>
+    <meta name="theme-color" content="#00f3ff">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Générateur QR</h1>
+        
+        <div class="input-group">
+            <label for="qr-url">Lien du QG (ou texte) :</label>
+            <input type="text" id="qr-url" placeholder="https://www.facebook.com/groups/..." autocomplete="off">
+        </div>
+        
+        <button id="generate-btn">Générer la cible</button>
+        
+        <div id="qrcode-container">
+            <!-- Le QR code s'injectera ici -->
+        </div>
+        
+        <button id="download-btn" style="display: none;">Télécharger l'image (PNG)</button>
+    </div>
+
+    <!-- Importation de la librairie légère de génération -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
