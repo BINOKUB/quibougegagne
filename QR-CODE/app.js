@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
         generateurQr.style.display = 'block';
     }
 
-    // 2. Tentative de déverrouillage manuel par le client
+   
     unlockBtn.addEventListener('click', () => {
         const cleSaisie = vipKeyInput.value.trim().toUpperCase();
         
-        // La règle : On accepte toute clé qui commence par "QR-PRO-" suivie d'au moins 4 caractères
+       
         if (cleSaisie.startsWith('QR-PRO-') && cleSaisie.length >= 11) {
             
             // C'est un succès ! On tamponne le passeport dans le navigateur
