@@ -1,4 +1,4 @@
-/* Révision v1.0 - Intégration initiale du générateur QR et charte visuelle sombre - style.css */
+/* Révision v1.2 - Ajout des styles pour l'écran de verrouillage Stripe et Passeport - style.css */
 body {
     background-color: #050505;
     color: #ffffff;
@@ -29,6 +29,14 @@ h1 {
     font-size: 24px;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+/* Nouveaux styles pour le texte de vente */
+.description {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .input-group {
@@ -80,6 +88,49 @@ button:hover {
     color: #050505;
 }
 
+/* Bouton spécifique pour le paiement Stripe */
+.stripe-btn {
+    display: inline-block;
+    background-color: #635bff;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stripe-btn:hover {
+    background-color: #4b45c6;
+}
+
+/* Séparateur visuel élégant */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #555;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #333;
+}
+
+.divider span {
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 #generate-btn {
     margin-bottom: 20px;
 }
@@ -90,10 +141,10 @@ button:hover {
     align-items: center;
     margin: 20px 0;
     min-height: 256px;
-    background-color: #ffffff; /* Le fond doit rester blanc pour la lisibilité du QR */
+    background-color: #ffffff;
     padding: 15px;
     border-radius: 4px;
-    display: none; /* Masqué par défaut */
+    display: none;
 }
 
 #qrcode-container img {
