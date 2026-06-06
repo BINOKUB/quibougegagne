@@ -1,4 +1,4 @@
-/* Révision v1.2 - Intégration du vigile (LocalStorage) et validation de clé de passeport - app.js */
+/* Révision v1.4 - Sécurité de longueur extrême (50 caractères) - app.js */
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- SECTION 1 : GESTION DU PASSEPORT (LE VIGILE) ---
@@ -12,31 +12,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const passeport = localStorage.getItem('qr_vip_access');
     
     if (passeport === 'valide') {
-        // Le client est connu, on ouvre la porte directement
         ecranVente.style.display = 'none';
         generateurQr.style.display = 'block';
     }
 
-   
+    // 2. Tentative de déverrouillage manuel par le client
     unlockBtn.addEventListener('click', () => {
-        const cleSaisie = vipKeyInput.value.trim().toUpperCase();
+        const cleSaisie = vipKeyInput.value.trim(); // Les minuscules et majuscules sont respectées
         
-       
-        if (cleSaisie.startsWith('QR-PRO-') && cleSaisie.length >= 11) {
+        if (cleSaisie.startsWith('QR-PRO-') && cleSaisie.length >= 50) {
             
-            // C'est un succès ! On tamponne le passeport dans le navigateur
             localStorage.setItem('qr_vip_access', 'valide');
             
-            // On bascule l'affichage vers l'outil
             ecranVente.style.display = 'none';
             generateurQr.style.display = 'block';
             errorMsg.style.display = 'none';
         } else {
-            // Échec de l'authentification : La clé ne respecte pas le format
             errorMsg.style.display = 'block';
         }
     });
-
 
     // --- SECTION 2 : MOTEUR DE GÉNÉRATION QR (EXISTANT) ---
     const urlInput = document.getElementById('qr-url');
