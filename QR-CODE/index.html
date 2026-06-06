@@ -1,4 +1,4 @@
-<!-- Révision v1.0 - Intégration initiale du générateur QR et structure de base - index.html -->
+<!-- Révision v1.2 - Intégration du système Passeport Navigateur (Blocage / Déblocage) - index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,19 +11,39 @@
 <body>
     <div class="container">
         <h1>Générateur QR</h1>
-        
-        <div class="input-group">
-            <label for="qr-url">Lien du QG (ou texte) :</label>
-            <input type="text" id="qr-url" placeholder="https://www.facebook.com/groups/..." autocomplete="off">
+
+        <!-- BLOC A : L'écran de vente / vérification de clé -->
+        <div id="ecran-vente">
+            <p class="description">Obtenez votre accès à vie. Un paiement unique, des QR codes illimités sans expiration ni pistage.</p>
+            
+            <!-- Remplace le # par ton vrai lien de paiement Stripe -->
+            <a href="https://buy.stripe.com/00w3cw8KL9YgauedyLbsc0i" target="_blank" class="stripe-btn">Acheter mon accès</a>
+            
+            <div class="divider"><span>OU</span></div>
+            
+            <div class="input-group">
+                <label for="vip-key">J'ai déjà ma clé de passeport :</label>
+                <input type="text" id="vip-key" placeholder="Ex: QR-PRO-1234" autocomplete="off">
+            </div>
+            <button id="unlock-btn">Déverrouiller</button>
+            <p id="error-msg" style="color: #ff3333; display: none; margin-top: 10px; font-size: 14px;">Clé invalide. Veuillez vérifier votre reçu.</p>
         </div>
         
-        <button id="generate-btn">Générer la cible</button>
-        
-        <div id="qrcode-container">
-            <!-- Le QR code s'injectera ici -->
+        <!-- BLOC B : Le générateur caché par défaut -->
+        <div id="generateur-qr" style="display: none;">
+            <div class="input-group">
+                <label for="qr-url">Lien du QG (ou texte) :</label>
+                <input type="text" id="qr-url" placeholder="https://www.monsite.com/..." autocomplete="off">
+            </div>
+            
+            <button id="generate-btn">Générer la cible</button>
+            
+            <div id="qrcode-container">
+                <!-- Le QR code s'injectera ici -->
+            </div>
+            
+            <button id="download-btn" style="display: none;">Télécharger l'image (PNG)</button>
         </div>
-        
-        <button id="download-btn" style="display: none;">Télécharger l'image (PNG)</button>
     </div>
 
     <!-- Importation de la librairie légère de génération -->
