@@ -1,11 +1,49 @@
-/* Révision v1.1 - Correction de la "Zone de Silence" (marge blanche) pour l'export - app.js */
+/* Révision v1.2 - Intégration du vigile (LocalStorage) et validation de clé de passeport - app.js */
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- SECTION 1 : GESTION DU PASSEPORT (LE VIGILE) ---
+    const ecranVente = document.getElementById('ecran-vente');
+    const generateurQr = document.getElementById('generateur-qr');
+    const unlockBtn = document.getElementById('unlock-btn');
+    const vipKeyInput = document.getElementById('vip-key');
+    const errorMsg = document.getElementById('error-msg');
+    
+    // 1. Vérification silencieuse au chargement de la page
+    const passeport = localStorage.getItem('qr_vip_access');
+    
+    if (passeport === 'valide') {
+        // Le client est connu, on ouvre la porte directement
+        ecranVente.style.display = 'none';
+        generateurQr.style.display = 'block';
+    }
+
+    // 2. Tentative de déverrouillage manuel par le client
+    unlockBtn.addEventListener('click', () => {
+        const cleSaisie = vipKeyInput.value.trim().toUpperCase();
+        
+        // La règle : On accepte toute clé qui commence par "QR-PRO-" suivie d'au moins 4 caractères
+        if (cleSaisie.startsWith('QR-PRO-') && cleSaisie.length >= 11) {
+            
+            // C'est un succès ! On tamponne le passeport dans le navigateur
+            localStorage.setItem('qr_vip_access', 'valide');
+            
+            // On bascule l'affichage vers l'outil
+            ecranVente.style.display = 'none';
+            generateurQr.style.display = 'block';
+            errorMsg.style.display = 'none';
+        } else {
+            // Échec de l'authentification : La clé ne respecte pas le format
+            errorMsg.style.display = 'block';
+        }
+    });
+
+
+    // --- SECTION 2 : MOTEUR DE GÉNÉRATION QR (EXISTANT) ---
     const urlInput = document.getElementById('qr-url');
     const generateBtn = document.getElementById('generate-btn');
     const qrContainer = document.getElementById('qrcode-container');
     const downloadBtn = document.getElementById('download-btn');
     
-    // Moteur de génération principal
     generateBtn.addEventListener('click', () => {
         const url = urlInput.value.trim();
         
@@ -14,12 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Nettoyage de la zone
         qrContainer.innerHTML = '';
         qrContainer.style.display = 'flex';
         downloadBtn.style.display = 'none';
 
-        // Génération du code brut (256x256)
         new QRCode(qrContainer, {
             text: url,
             width: 256,
@@ -29,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             correctLevel : QRCode.CorrectLevel.H
         });
 
-        // Activation du bouton
         setTimeout(() => {
             const qrImage = qrContainer.querySelector('img');
             if (qrImage) {
@@ -38,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     });
 
-    // Logique d'exportation avec Zone de Silence (Quiet Zone)
     downloadBtn.addEventListener('click', () => {
         const qrImage = qrContainer.querySelector('img');
         
@@ -47,24 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = qrImage.getAttribute('src');
             
             img.onload = () => {
-                // 1. Configuration de la marge (20px de chaque côté)
                 const padding = 20; 
                 const size = 256;
                 
-                // 2. Création de notre plan de travail virtuel
                 const canvas = document.createElement('canvas');
                 canvas.width = size + (padding * 2);
                 canvas.height = size + (padding * 2);
                 const ctx = canvas.getContext('2d');
                 
-                // 3. Peinture de la Zone de Silence en blanc pur
                 ctx.fillStyle = '#ffffff';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
-                // 4. Impression du code QR au centre
                 ctx.drawImage(img, padding, padding, size, size);
                 
-                // 5. Extraction et téléchargement du produit final
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
                 link.download = 'QR_Code_Tactique.png';
